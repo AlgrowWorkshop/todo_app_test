@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <title>TODO</title>
+
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <script>
+      document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+          if (!localStorage.getItem("livelabtoken")) {
+            window.open("/index.html", "_self");
+          }
+        }
+      };
+    </script>
+    <header>
+      <h1 id="asa">Todo App</h1>
+      <span class="add-todo-btn img-add-btn"
+        ><img src="./images/icAddTodo.svg"
+      /></span>
+      <button class="sign-out">SignOut</button>
+      <span class="profile-img"><img src="./images/profilePic.png" /></span>
+    </header>
+
+    <main>
+      <nav>
+        <div class="option all active">
+          <img src="./images/icAllTasks.svg" alt="All Tasks" />
+          <h3>All Tasks</h3>
+        </div>
+
+        <div class="option today">
+          <img src="./images/icTodaysTask.svg" alt="Todays Tasks" />
+          <h3>Today's Tasks</h3>
+        </div>
+
+        <div class="option completed">
+          <img
+            src="./images/icCompletedTasks.svg"
+            alt="Completed Tasks Tasks"
+          />
+          <h3>Completed Tasks</h3>
+        </div>
+      </nav>
+
+      <section class="todo-container">
+        <div class="all-tasks">
+          <div>
+            <h2>Nice To See You, <span class="curr-user-name"></span></h2>
+            <h3>It's <span class="curr-date"></span></h3>
+          </div>
+
+          <h4>All Tasks</h4>
+          <div class="todos all">
+            <!-- <div class="todo">
+              <input type="checkbox" name="todo-check" checked />
+              <p>Lorem ipsum dolor sit amet consectetur.</p>
+              <span class="priority"></span>
+              <button class="edit-btn">
+                <img src="./images/icEdit.svg" alt="icon edit" />
+              </button>
+              <button class="delete-btn">
+                <img src="./images/icDelete.svg" alt="icon del" />
+              </button>
+            </div> -->
+          </div>
+        </div>
+        <div class="today-tasks">
+          <div>
+            <h2>Today's Tasks</h2>
+            <h3>It's <span class="curr-date"></span></h3>
+          </div>
+          <h4>Today</h4>
+          <div class="todos today">
+            <!--  -->
+          </div>
+        </div>
+
+        <div class="completed-tasks">
+          <div>
+            <h2>Completed Tasks</h2>
+          </div>
+          <h4>Completed Task</h4>
+          <div class="todos completed">
+            <!--  -->
+          </div>
+        </div>
+      </section>
+
+      <div class="add-todo-btn add-todo-ic">
+        <img src="./images/icAddTodo.svg" alt="add-todo" />
+      </div>
+    </main>
+
+    <div class="modal-container">
+      <div class="modal">
+        <input type="text" placeholder="Write your todo here..." />
+        <input type="date" />
+        <select name="priority">
+          <option value="regular">Regular</option>
+          <option value="urgent">Urgent</option>
+          <option value="low">Low</option>
+        </select>
+        <div class="buttons">
+          <button class="cancel modal-close">Cancel</button>
+          <button class="add modal-success">Submit</button>
+        </div>
+      </div>
+    </div>
+
+    <!--  -->
+    <script src="./main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Algrow Learning's Todo App | sign-up</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Algrow Learning</h1>
+    </header>
+
+    <main>
+      <h2>Sign Up.</h2>
+      <section>
+        <input type="text" class="name" placeholder="Name" /><br />
+        <input type="text" class="user-name" placeholder="User Name" /><br />
+        <input type="password" class="password" placeholder="Password" /><br />
+
+        <button id="btn-register">Register</button>
+      </section>
+      <p>Already have an account?<a href="./index.html">Sign In</a></p>
+    </main>
+
+    <!--  -->
+    <script>
+      const registerBtn = document.querySelector("#btn-register");
+      const nameP = document.querySelector(".name");
+      const userName = document.querySelector(".user-name");
+      const password = document.querySelector(".password");
+
+      registerBtn.addEventListener("click", function () {
+        fetch("/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userName: userName.value,
+            password: password.value,
+            name: nameP.value,
+          }),
+        })
+          .then((res) => {
+            return res.json();
+          })
+          .then((data) => {
+            if (data.status == "true") {
+              alert("User Registered.\nPlease sign in.");
+              setTimeout(function () {
+                window.open("/", "_self");
+              }, 2000);
+            } else {
+              alert(data.message);
+            }
+          });
+      });
+    </script>
+  </body>
+</html>
