@@ -63,11 +63,11 @@ fetch("/getdetails", {
   .then((res) => res.json())
   .then((data) => {
     console.log(data);
-    setData(data.userDetails.todos, data.userDetails.name);
+    setData(data.userDetails.todos, data.userDetails);
     setHTML();
   });
 
-var allTodos, todayTodos, completedTodos, currUserName, currDate;
+var allTodos, todayTodos, completedTodos, currUserName, currDate, ppNumber;
 
 function todayDate() {
   const date = new Date();
@@ -84,10 +84,11 @@ document.querySelectorAll(".curr-date").forEach((d) => {
   d.innerHTML = todayDate();
 });
 
-function setData(data, name) {
+function setData(data, { name, avtaar }) {
   if (name) {
     currUserName = name;
   }
+  ppNumber = avtaar;
   allTodos = data;
   todayTodos = [];
   data.forEach((todo) => {
@@ -101,6 +102,11 @@ function setData(data, name) {
 }
 
 function setHTML() {
+  console.log(ppNumber);
+  document
+    .querySelector(".pp")
+    .setAttribute("src", `./images/pp-${ppNumber}.png`);
+
   document.querySelectorAll(".curr-user-name").forEach((u) => {
     u.innerHTML = currUserName;
   });
