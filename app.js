@@ -27,8 +27,6 @@ const salt = +process.env.SALT;
 
 const privateKey = process.env.PRIVATE_KEY;
 
-app.use("/", express.static(path.join(__dirname, "todo")));
-
 app.post("/register", async (req, res) => {
   const { name, userName, password } = req.body;
 
@@ -277,3 +275,5 @@ app.post("/completedtodo", async (req, res) => {
 app.listen(port, () => {
   console.log("Hey app started at " + port);
 });
+
+app.use("/", express.static(path.join(__dirname, "build")));
